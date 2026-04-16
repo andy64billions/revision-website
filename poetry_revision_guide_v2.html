@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AQA Poetry Revision Guide — Grade 9</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap');
+
+  :root {
+    --bg: #0f0e0d;
+    --surface: #1a1916;
+    --border: #2e2c28;
+    --text: #e8e0d0;
+    --muted: #8a8070;
+    --accent1: #c9955c;
+    --accent2: #6aaa82;
+    --accent3: #c46a7e;
+    --accent4: #6a9fc4;
+    --accent5: #9a7bc4;
+    --gold: #d4a853;
+    --nav-bg: #0a0908;
+  }
+
+  body.light {
+    --bg: #faf8f4;
+    --surface: #f0ece3;
+    --border: #d8d0c0;
+    --text: #2a2520;
+    --muted: #8a7e6e;
+    --accent1: #a0682a;
+    --accent2: #3a7a54;
+    --accent3: #a04060;
+    --accent4: #2a6898;
+    --accent5: #6a4aaa;
+    --gold: #9a6e1a;
+    --nav-bg: #ede8df;
+  }
+
+  body, nav, .quote-block, .memorise-box, .g9-box, .context-box, .tip-box, .ao-box, .comp-row, .poem-card {
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 8px 16px;
+  }
+
+  nav button {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 3px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  nav button:hover { color: var(--text); border-color: var(--border); }
+  nav button.active { color: var(--bg); font-weight: 600; }
+
+  nav button[data-tab="home"].active { background: var(--gold); border-color: var(--gold); }
+  nav button[data-tab="ozy"].active { background: var(--accent1); border-color: var(--accent1); }
+  nav button[data-tab="check"].active { background: var(--accent2); border-color: var(--accent2); }
+  nav button[data-tab="pop"].active { background: var(--accent3); border-color: var(--accent3); }
+  nav button[data-tab="kami"].active { background: var(--accent4); border-color: var(--accent4); }
+  nav button[data-tab="rem"].active { background: var(--accent5); border-color: var(--accent5); }
+  nav button[data-tab="comp"].active { background: #555; border-color: #555; color: #fff; }
+  nav button[data-tab="tips"].active { background: var(--gold); border-color: var(--gold); }
+
+  /* SECTIONS */
+  section { display: none; max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+  section.active { display: block; }
+
+  /* TYPOGRAPHY */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 40px 0 12px;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    margin: 28px 0 8px;
+  }
+
+  p { margin-bottom: 14px; }
+
+  .subtitle {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  /* QUOTE BLOCKS */
+  .quote-block {
+    border-left: 3px solid var(--gold);
+    background: var(--surface);
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .quote-block .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #f0e8d8;
+    margin-bottom: 8px;
+  }
+
+  .quote-block .quote-analysis {
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* POEM COLOUR VARIANTS */
+  .ozy .quote-block { border-left-color: var(--accent1); }
+  .check .quote-block { border-left-color: var(--accent2); }
+  .pop .quote-block { border-left-color: var(--accent3); }
+  .kami .quote-block { border-left-color: var(--accent4); }
+  .rem .quote-block { border-left-color: var(--accent5); }
+
+  /* MEMORISE BOX */
+  .memorise-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+
+  .memorise-box h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 16px;
+  }
+
+  .memorise-box ol {
+    padding-left: 20px;
+  }
+
+  .memorise-box li {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    margin-bottom: 10px;
+    font-size: 1.0rem;
+    color: #f0e8d8;
+  }
+
+  .memorise-box li span {
+    font-family: 'Source Serif 4', serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* GRADE 9 BOX */
+  .g9-box {
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .g9-box .g9-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+    opacity: 0.8;
+  }
+
+  .g9-box p { margin-bottom: 0; font-size: 0.95rem; }
+
+  .ozy .g9-box { background: #1f1508; border: 1px solid #4a2e08; }
+  .ozy .g9-box .g9-label { color: var(--accent1); }
+  .check .g9-box { background: #081a10; border: 1px solid #1a4a28; }
+  .check .g9-box .g9-label { color: var(--accent2); }
+  .pop .g9-box { background: #1f0810; border: 1px solid #4a1828; }
+  .pop .g9-box .g9-label { color: var(--accent3); }
+  .kami .g9-box { background: #081520; border: 1px solid #183a52; }
+  .kami .g9-box .g9-label { color: var(--accent4); }
+  .rem .g9-box { background: #130f1e; border: 1px solid #352858; }
+  .rem .g9-box .g9-label { color: var(--accent5); }
+
+  body.light .ozy .g9-box { background: #fef3e8; border-color: #f0c890; }
+  body.light .check .g9-box { background: #eaf7f0; border-color: #90d0b0; }
+  body.light .pop .g9-box { background: #fdeef2; border-color: #f0a0b8; }
+  body.light .kami .g9-box { background: #e8f4fd; border-color: #90c8f0; }
+  body.light .rem .g9-box { background: #f3eeff; border-color: #c0a0e8; }
+
+  body.light .quote-block .quote-text { color: #2a2520; }
+  body.light .memorise-box li { color: #2a2520; }
+  body.light .comp-cell.poem-name { color: #2a2520; }
+
+  /* POEM HEADER */
+  .poem-header {
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  .poem-header .poet {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .ozy .tag { border-color: var(--accent1); color: var(--accent1); }
+  .check .tag { border-color: var(--accent2); color: var(--accent2); }
+  .pop .tag { border-color: var(--accent3); color: var(--accent3); }
+  .kami .tag { border-color: var(--accent4); color: var(--accent4); }
+  .rem .tag { border-color: var(--accent5); color: var(--accent5); }
+
+  /* COMPARISON TABLE */
+  .comp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .comp-row:hover { border-color: #444; }
+
+  .comp-cell {
+    padding: 14px 16px;
+    font-size: 0.88rem;
+    border-right: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .comp-cell:last-child { border-right: none; }
+
+  .comp-cell.poem-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #f0e8d8;
+  }
+
+  .comp-cell.best-match {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .comp-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding: 8px 16px;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  /* HOME */
+  .poem-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .poem-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .poem-card:hover { transform: translateY(-2px); border-color: #444; }
+
+  .poem-card .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+
+  .poem-card .card-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+
+  .poem-card .card-poet {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* TIPS */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 600px) {
+    .tips-grid { grid-template-columns: 1fr; }
+    .comp-row, .comp-header { grid-template-columns: 1fr; }
+    .comp-cell.poem-name::before { content: 'Poem: '; font-style: normal; color: var(--muted); font-size: 0.8rem; }
+    .comp-cell.best-match::before { content: 'Best match: '; color: var(--muted); font-size: 0.8rem; }
+    .comp-cell:last-child::before { content: 'Why: '; color: var(--muted); font-size: 0.8rem; }
+    .comp-header { display: none; }
+  }
+
+  .tip-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+  }
+
+  .tip-box h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin: 0 0 12px;
+  }
+
+  .tip-box p { font-size: 0.9rem; margin-bottom: 8px; }
+  .tip-box p:last-child { margin-bottom: 0; }
+
+  .starter-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+  }
+
+  .starter-list li {
+    background: #0f0e0d;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+    font-style: italic;
+    color: #ddd;
+  }
+
+  .ao-row {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+  }
+
+  .ao-box {
+    flex: 1;
+    min-width: 120px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .ao-box .ao-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .ao-box .ao-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .ao-box .ao-desc {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  strong { color: #f0e8d8; }
+  em { color: #ccc; }
+
+  .section-intro {
+    font-size: 1.0rem;
+    color: var(--muted);
+    border-left: 2px solid var(--border);
+    padding-left: 16px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  .context-box {
+    background: var(--surface);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0 28px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    border: 1px solid var(--border);
+  }
+
+  .context-box .context-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <button class="active" data-tab="home" onclick="show('home',this)">Overview</button>
+  <button id="theme-toggle" onclick="toggleTheme()" style="margin-left:auto;font-size:16px;padding:4px 10px;border:1px solid var(--border);border-radius:3px;background:none;cursor:pointer;color:var(--muted);" title="Toggle light/dark mode">☀️</button>
+  <button data-tab="ozy" onclick="show('ozy',this)">Ozymandias</button>
+  <button data-tab="check" onclick="show('check',this)">Checking Out Me History</button>
+  <button data-tab="pop" onclick="show('pop',this)">Poppies</button>
+  <button data-tab="kami" onclick="show('kami',this)">Kamikaze</button>
+  <button data-tab="rem" onclick="show('rem',this)">Remains</button>
+  <button data-tab="comp" onclick="show('comp',this)">Comparison Guide</button>
+  <button data-tab="tips" onclick="show('tips',this)">Grade 9 Tips</button>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div style="padding:40px 0 24px;">
+    <p style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);margin-bottom:12px;">AQA GCSE English Literature</p>
+    <h1>Power &amp; Conflict<br>Poetry Revision</h1>
+    <p class="subtitle">Grade 9 guide — 5 core poems, complete comparison map, exam technique</p>
+  </div>
+
+  <p>This guide covers the five poems most strategically chosen for maximum theme range across the AQA Power &amp; Conflict cluster. For each poem you will find detailed analysis, the best quotes, and a short memorisation list. The comparison guide tells you which poem to reach for whatever comes up in the exam.</p>
+
+  <div class="poem-card-grid">
+    <div class="poem-card" onclick="show('ozy',document.querySelector('[data-tab=ozy]'))">
+      <div class="dot" style="background:var(--accent1)"></div>
+      <div class="card-title">Ozymandias</div>
+      <div class="card-poet">Percy Bysshe Shelley, 1818</div>
+    </div>
+    <div class="poem-card" onclick="show('check',document.querySelector('[data-tab=check]'))">
+      <div class="dot" style="background:var(--accent2)"></div>
+      <div class="card-title">Checking Out Me History</div>
+      <div class="card-poet">John Agard, 1996</div>
+    </div>
+    <div class="poem-card" onclick="show('pop',document.querySelector('[data-tab=pop]'))">
+      <div class="dot" style="background:var(--accent3)"></div>
+      <div class="card-title">Poppies</div>
+      <div class="card-poet">Jane Weir, 2009</div>
+    </div>
+    <div class="poem-card" onclick="show('kami',document.querySelector('[data-tab=kami]'))">
+      <div class="dot" style="background:var(--accent4)"></div>
+      <div class="card-title">Kamikaze</div>
+      <div class="card-poet">Beatrice Garland, 2011</div>
+    </div>
+    <div class="poem-card" onclick="show('rem',document.querySelector('[data-tab=rem]'))">
+      <div class="dot" style="background:var(--accent5)"></div>
+      <div class="card-title">Remains</div>
+      <div class="card-poet">Simon Armitage, 2008</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Theme Coverage Map</h2>
+  <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">These 5 poems cover every major theme likely to appear in the exam.</p>
+
+  <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+    <thead>
+      <tr style="border-bottom:1px solid var(--border);">
+        <th style="text-align:left;padding:10px 12px;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:400;">Theme</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--accent1);font-size:0.75rem;">Ozy</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--accent2);font-size:0.75rem;">Check</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--accent3);font-size:0.75rem;">Pop</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--accent4);font-size:0.75rem;">Kami</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--accent5);font-size:0.75rem;">Rem</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #1e1c18;"><td style="padding:10px 12px;">Power &amp; its limits</td><td style="text-align:center;color:var(--accent1);">●</td><td style="text-align:center;color:var(--accent2);">●</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--muted);">·</td></tr>
+      <tr style="border-bottom:1px solid #1e1c18;"><td style="padding:10px 12px;">Identity &amp; self</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent2);">●</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent4);">●</td><td style="text-align:center;color:var(--muted);">·</td></tr>
+      <tr style="border-bottom:1px solid #1e1c18;"><td style="padding:10px 12px;">War &amp; conflict</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent3);">●</td><td style="text-align:center;color:var(--accent4);">●</td><td style="text-align:center;color:var(--accent5);">●</td></tr>
+      <tr style="border-bottom:1px solid #1e1c18;"><td style="padding:10px 12px;">Grief &amp; loss</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent3);">●</td><td style="text-align:center;color:var(--accent4);">●</td><td style="text-align:center;color:var(--accent5);">●</td></tr>
+      <tr style="border-bottom:1px solid #1e1c18;"><td style="padding:10px 12px;">Nature &amp; its power</td><td style="text-align:center;color:var(--accent1);">●</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent4);">●</td><td style="text-align:center;color:var(--muted);">·</td></tr>
+      <tr style="border-bottom:1px solid #1e1c18;"><td style="padding:10px 12px;">Legacy &amp; memory</td><td style="text-align:center;color:var(--accent1);">●</td><td style="text-align:center;color:var(--accent2);">●</td><td style="text-align:center;color:var(--accent3);">●</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent5);">●</td></tr>
+      <tr style="border-bottom:1px solid #1e1c18;"><td style="padding:10px 12px;">Duty &amp; moral conflict</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent4);">●</td><td style="text-align:center;color:var(--accent5);">●</td></tr>
+      <tr><td style="padding:10px 12px;">Psychological trauma</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent3);">●</td><td style="text-align:center;color:var(--muted);">·</td><td style="text-align:center;color:var(--accent5);">●</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- OZYMANDIAS -->
+<section id="ozy" class="ozy">
+  <div class="poem-header">
+    <p class="poet">Percy Bysshe Shelley — 1818</p>
+    <h1>Ozymandias</h1>
+    <div class="tag-row">
+      <span class="tag">Power</span>
+      <span class="tag">Legacy</span>
+      <span class="tag">Time</span>
+      <span class="tag">Nature's indifference</span>
+      <span class="tag">Hubris</span>
+    </div>
+  </div>
+
+  <div class="context-box">
+    <div class="context-label">Context</div>
+    Shelley was a radical Romantic poet who actively opposed tyranny and monarchy. Written in 1818, when Napoleon's empire had recently collapsed — a direct contemporary parallel. Ancient Egypt was fashionable after Napoleon's 1798 invasion, making the setting resonant. The name "Ozymandias" is a Greek transliteration of the Egyptian pharaoh Ramesses II. Written as a competition with his friend Horace Smith, who wrote a lesser-known poem on the same topic.
+  </div>
+
+  <h2>Summary</h2>
+  <p>A first-person speaker reports what a traveller told them: in the desert stands a ruined statue of a great king. The inscription on the pedestal boasts of supreme power, yet nothing remains around it — only empty sand.</p>
+
+  <h2>Form &amp; Structure</h2>
+  <p><strong>Sonnet (14 lines)</strong> — a form traditionally associated with power, love, and control. Shelley subverts this, using the form to undermine the idea of lasting power. The <strong>irregular rhyme scheme</strong> (ABABACDCEDEFEF) mirrors the crumbling, disordered remains of the statue — order is breaking down. There is a <strong>triple narrative distance</strong>: the speaker reports the traveller who reports the sculptor who preserved the king's expression. Ozymandias's voice only reaches us through others — already diminished. The <strong>volta</strong> ("Nothing beside remains") arrives with devastating simplicity after the king's grandiose speech.</p>
+
+  <h2>Key Quotes &amp; Analysis</h2>
+
+  <div class="quote-block">
+    <div class="quote-text">"Half sunk, a shattered visage lies"</div>
+    <div class="quote-analysis">The statue is <em>incomplete</em> — the word "half" implies ongoing decay. "Shattered visage" fragments the face of power literally and symbolically; a ruler's face was the ultimate symbol of their authority. "Lies" carries a double meaning: the statue lies on the ground, but the inscription it carries is also a lie.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"sneer of cold command"</div>
+    <div class="quote-analysis">The alliteration of hard 'c' sounds mirrors the clipped cruelty of the king. "Cold" suggests both emotional detachment and the lifeless stone itself. The paradox is that the sculptor's "mocking" hand has outlasted the king — art preserves, but also satirises power. The sneer belongs to the tyrant, but it is the sculptor who gets the last laugh.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"My name is Ozymandias, King of Kings"</div>
+    <div class="quote-analysis">The biblical echo — "King of Kings" is a title for Jesus in Revelation — is an act of extraordinary hubris. The direct speech gives the king a voice only to immediately undercut it. The first-person "My" is possessive and domineering; by the poem's end, possession over anything has become absurd.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"Look on my Works, ye Mighty, and despair!"</div>
+    <div class="quote-analysis">An imperative addressed to other rulers, intended as a boast of supremacy. The exclamation mark conveys Ozymandias's certainty. The crushing irony is that the poem's reader has already seen there is nothing left to look on — the instruction despairingly answers itself. "Despair" is the poem's emotional verdict on human ambition.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"Nothing beside remains"</div>
+    <div class="quote-analysis">Three monosyllabic words after the grandiose boast. The effect is devastating in its simplicity — Shelley uses minimal language to deliver maximum irony. "Nothing" is the logical opposite of the "Works" Ozymandias invites us to admire. The full stop enforces finality.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"The lone and level sands stretch far away"</div>
+    <div class="quote-analysis">The sibilance creates a slow, vast, hissing emptiness. Alliteration of 'l' in "lone and level" slows the line to a mournful pace. The landscape is indifferent — nature does not mourn the fallen empire, it simply continues. The final image is of infinite, uncaring space, making the statue's pretensions seem microscopic.</div>
+  </div>
+
+  <div class="memorise-box">
+    <h3>📌 Memorise These 5 Quotes</h3>
+    <ol>
+      <li>"sneer of cold command"<span>alliteration, cruelty, sculptor mocking the tyrant</span></li>
+      <li>"Half sunk, a shattered visage lies"<span>fragmentation of power; "lies" double meaning</span></li>
+      <li>"My name is Ozymandias, King of Kings"<span>hubris, biblical echo, direct speech</span></li>
+      <li>"Nothing beside remains"<span>monosyllabic devastation after grandiose boast</span></li>
+      <li>"The lone and level sands stretch far away"<span>sibilance, nature's indifference, emptiness</span></li>
+    </ol>
+  </div>
+
+  <div class="g9-box">
+    <div class="g9-label">⬆ Grade 9 Angle</div>
+    <p>The triple narrative voice <em>enacts</em> the poem's argument. Ozymandias's words survive only because a sculptor preserved them, and the sculptor's work survives only because a traveller reported it, and the traveller's account survives only because a poet recorded it. It is art — not power — that endures. The poem is its own refutation of Ozymandias's claims.</p>
+  </div>
+</section>
+
+<!-- CHECKING OUT ME HISTORY -->
+<section id="check" class="check">
+  <div class="poem-header">
+    <p class="poet">John Agard — 1996</p>
+    <h1>Checking Out Me History</h1>
+    <div class="tag-row">
+      <span class="tag">Identity</span>
+      <span class="tag">Cultural oppression</span>
+      <span class="tag">Colonialism</span>
+      <span class="tag">Knowledge &amp; power</span>
+      <span class="tag">Resistance</span>
+    </div>
+  </div>
+
+  <div class="context-box">
+    <div class="context-label">Context</div>
+    John Agard was born in British Guiana (now Guyana) in 1949 and moved to Britain in 1977. He was educated under a colonial British system that taught British history while largely ignoring Caribbean, African, and South American history. The poem directly attacks this educational erasure. Writing in Creole dialect is itself a political act — Agard refuses to use the coloniser's standard English. The historical figures he names — Toussaint L'Ouverture (who led the Haitian slave revolution), Nanny of the Maroons (Jamaican freedom fighter), and Mary Seacole (Caribbean-British nurse in the Crimean War) — were largely absent from British school curricula for decades.
+  </div>
+
+  <h2>Summary</h2>
+  <p>The speaker angrily catalogues the trivial British history forced on him at school — Dick Whittington, Guy Fawkes, 1066 — and contrasts this with the powerful Caribbean and African historical figures he had to discover for himself. He insists that knowing his own history is essential to forming his identity.</p>
+
+  <h2>Form &amp; Structure</h2>
+  <p><strong>Free verse with Creole dialect</strong> — the rejection of formal, standard English is itself a resistance to colonial authority. The poem has two visually distinct sections: the <strong>indented, italicised stanzas</strong> for the "real" historical figures are set apart as sacred, elevated — almost reverential. The <strong>block stanzas</strong> for colonial history are dense and dismissive. <strong>Anaphora</strong> ("Dem tell me / Dem tell me") creates a drumbeat of indoctrination that builds in oppressive weight. <strong>Short, isolated lines</strong> (particularly in the Toussaint section) give each word maximum impact. The poem ends with an active, ongoing verb — "carving out me identity" — suggesting the process is not yet finished.</p>
+
+  <h2>Key Quotes &amp; Analysis</h2>
+
+  <div class="quote-block">
+    <div class="quote-text">"Dem tell me / Dem tell me / Wha dem want to tell me"</div>
+    <div class="quote-analysis">The triple anaphora creates a suffocating, repetitive pressure — this is how ideology works, through relentless repetition. "Dem" (they) is deliberately vague — it encompasses the colonial education system, the British state, authority in general. The Creole syntax is not a mistake; it is a deliberate refusal to use the oppressor's language on its own terms.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"Bandage up me eye with me own history"</div>
+    <div class="quote-analysis">A powerful, disturbing metaphor: the colonial education system has blinded the speaker using his own people's history as the instrument. "Bandage" suggests both a wound (the history itself is violence) and a medical covering (the truth is being hidden for the speaker's supposed "good"). The possessive "me own" is particularly painful — what should be his inheritance is weaponised against him.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"Toussaint / a slave / with vision"</div>
+    <div class="quote-analysis">The extreme fragmentation into single-word or two-word lines gives each element equal weight and forces the reader to pause. The juxtaposition of "slave" and "vision" is an oxymoron that challenges the reader's assumptions: the two words should not coexist, yet they do. This formal technique mirrors the poem's argument — history has erased the complexity of these figures, and Agard restores it.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"a toussaint de hurricane / de beacon"</div>
+    <div class="quote-analysis">The twin metaphors work in tension: a hurricane is violent, destructive, unstoppable — but a beacon guides, offers hope and direction. Toussaint L'Ouverture was both: he led a violent revolution <em>and</em> lit the way for Caribbean independence. Agard refuses to simplify the figure into a comfortable hero. The lowercase "de" (instead of "the") keeps the dialect authentic.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"carving out me identity"</div>
+    <div class="quote-analysis">The poem's culminating image. "Carving" is active, effortful, ongoing — not a passive receiving of identity but a deliberate construction of it. It also implies resistance: carving against something hard. The present participle ("carving") rather than past tense means this work is unfinished — the poem doesn't offer a neat resolution, but an ongoing act of self-determination.</div>
+  </div>
+
+  <div class="memorise-box">
+    <h3>📌 Memorise These 5 Quotes</h3>
+    <ol>
+      <li>"Dem tell me / Dem tell me / Wha dem want to tell me"<span>anaphora, indoctrination, repetition as oppression</span></li>
+      <li>"Bandage up me eye with me own history"<span>metaphor of deliberate blinding; "me own" — painful possession</span></li>
+      <li>"Toussaint / a slave / with vision"<span>fragmented lines, oxymoron, restoring complexity</span></li>
+      <li>"a toussaint de hurricane / de beacon"<span>dual metaphor — violence and hope, not simplified</span></li>
+      <li>"carving out me identity"<span>active verb, ongoing, resistance, unfinished</span></li>
+    </ol>
+  </div>
+
+  <div class="g9-box">
+    <div class="g9-label">⬆ Grade 9 Angle</div>
+    <p>The dialect <em>is</em> the argument. Agard is not writing in Creole for accessibility or character — he is making the point that the poem itself, in its form and language, is an act of the reclamation it describes. Form and content are inseparable. A student who notices this will immediately be writing at a higher level than one who treats the dialect as a stylistic quirk.</p>
+  </div>
+</section>
+
+<!-- POPPIES -->
+<section id="pop" class="pop">
+  <div class="poem-header">
+    <p class="poet">Jane Weir — 2009</p>
+    <h1>Poppies</h1>
+    <div class="tag-row">
+      <span class="tag">Grief &amp; loss</span>
+      <span class="tag">War's human cost</span>
+      <span class="tag">Memory</span>
+      <span class="tag">Suppressed emotion</span>
+      <span class="tag">Family</span>
+    </div>
+  </div>
+
+  <div class="context-box">
+    <div class="context-label">Context</div>
+    Jane Weir wrote this poem in 2009 for Carol Ann Duffy's anthology "The Not Dead," which collected poetry based on interviews with veterans suffering from PTSD. While most poems in the anthology took the soldier's perspective, Weir chose to write from the viewpoint of a mother. The poem is intentionally not tied to a specific war — the poppies of Remembrance Sunday connect it to WWI but also to all modern conflict. Weir's poem is notable for its almost total absence of the word "war" — the violence is never named directly, only felt through domestic detail.
+  </div>
+
+  <h2>Summary</h2>
+  <p>A mother recalls the moment before her son left — possibly for war. She pinned a poppy on his lapel, smoothed his collar, suppressed her grief. The poem ends with her standing at a war memorial, listening for the sound of his voice on the wind. The question of whether he is alive or dead is deliberately left unresolved.</p>
+
+  <h2>Form &amp; Structure</h2>
+  <p><strong>Free verse</strong> — the lack of fixed form mirrors the mother's emotional fragility and lack of control. <strong>Long, enjambed sentences</strong> spill over lines as if the grief cannot be contained — thoughts run on the way anxiety does. The poem is <strong>non-linear</strong>, shifting between the memory of his departure and the present at the memorial. <strong>Domestic imagery</strong> (lapel pins, blazer collars, Sellotape) is juxtaposed with military imagery (war memorial, poppies) — the home front and the battlefield overlap without ever being named as such. The poem ends with no resolution, mid-action, which enacts the mother's permanent state of waiting.</p>
+
+  <h2>Key Quotes &amp; Analysis</h2>
+
+  <div class="quote-block">
+    <div class="quote-text">"Before you left, I pinned one onto your lapel"</div>
+    <div class="quote-analysis">The domestic intimacy of "pinned" — a mother dressing her child — is overlaid with the weight of the poppy symbol. The poppy is worn in November to remember the war dead: by pinning it on him before he leaves, the mother is symbolically preparing him for death, though this is a thought she cannot consciously hold. The tender action and the terrible resonance operate simultaneously.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"steeled the softening"</div>
+    <div class="quote-analysis">The verb "steeled" has a military connotation — to steel oneself is a soldier's phrase — but here it is a mother using it against her own emotion. "Softening" is grief beginning to break through; she physically suppresses it. The alliterative 's' sounds link the two words into a single act of internal conflict. The compressed phrase does a remarkable amount of work: it shows us the effort of controlling grief without ever naming it.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"released a song of loss"</div>
+    <div class="quote-analysis">A moment of emotional breakthrough — the restraint gives way. "Released" implies something that had been imprisoned; the suppressed grief escapes. "Song of loss" is a synaesthetic image — emotion expressed as sound — and the word "song" carries both beauty and mourning (like a lament or a dirge). The line is placed at a moment of physical separation (she lets go of the door), so the release is literal as well as emotional.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"leaned against it like a wishbone"</div>
+    <div class="quote-analysis">The simile of the wishbone is extraordinarily compressed. A wishbone is fragile — it breaks. It is associated with luck and with wishes, both of which are uncertain. The image captures the mother's hope (she is wishing for his return) and her fragility (she might break). The act of leaning on the door suggests both physical weakness and the desperate desire to stay connected to him through the barrier.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"hoping to hear / your playground voice catch on the wind"</div>
+    <div class="quote-analysis">"Playground voice" regresses the son to childhood — the mother's grief is also a grief for the child she once had, not just the soldier she might lose. "Catch on the wind" suggests something fleeting, almost present but not quite — the voice is just out of reach. This is a perfect image of grief: you almost hear it, almost see it, but it slips away. The enjambment across "hear / your" enacts that reaching, catching quality.</div>
+  </div>
+
+  <div class="memorise-box">
+    <h3>📌 Memorise These 5 Quotes</h3>
+    <ol>
+      <li>"Before you left, I pinned one onto your lapel"<span>domestic action + poppy symbol = grief made physical</span></li>
+      <li>"steeled the softening"<span>military verb against emotion; suppressed grief</span></li>
+      <li>"released a song of loss"<span>suppressed grief escaping; synaesthesia</span></li>
+      <li>"leaned against it like a wishbone"<span>fragility, hope, the wish for return</span></li>
+      <li>"hoping to hear / your playground voice catch on the wind"<span>regression, grief, something just out of reach</span></li>
+    </ol>
+  </div>
+
+  <div class="g9-box">
+    <div class="g9-label">⬆ Grade 9 Angle</div>
+    <p>The poem is about <em>suppressed</em> grief — the word "war" never appears; the son's fate is never confirmed. Grade 9 analysis focuses on what is <em>absent</em> as much as what is present. The mother never says she is afraid or devastated — but every domestic detail encodes these feelings. The highest-level insight is that the poem's form (fragmented, enjambed, unresolved) mirrors the mother's psychological state.</p>
+  </div>
+</section>
+
+<!-- KAMIKAZE -->
+<section id="kami" class="kami">
+  <div class="poem-header">
+    <p class="poet">Beatrice Garland — 2011</p>
+    <h1>Kamikaze</h1>
+    <div class="tag-row">
+      <span class="tag">Duty vs. desire</span>
+      <span class="tag">War &amp; survival</span>
+      <span class="tag">Identity</span>
+      <span class="tag">Nature</span>
+      <span class="tag">Family &amp; shame</span>
+    </div>
+  </div>
+
+  <div class="context-box">
+    <div class="context-label">Context</div>
+    Kamikaze pilots were Japanese fighters in WWII ordered to fly suicide missions — deliberately crashing their planes into Allied ships. "Kamikaze" means "divine wind" in Japanese, referring to the typhoons that destroyed Mongol invasion fleets in the 13th century. The missions were framed as the ultimate act of honour and national duty. A pilot who turned back faced permanent social ostracism — treated as if dead by his community and family. Beatrice Garland imagines such a pilot and the consequences of his survival through the voice of his daughter, who only later questions whether her father made the right choice.
+  </div>
+
+  <h2>Summary</h2>
+  <p>A daughter narrates her father's story: a kamikaze pilot who turned back from his mission after seeing the sea and remembering his childhood fishing trips with his own father. Upon returning home, his family and community refused to acknowledge him — his wife and children were taught to behave as if he no longer existed. The poem ends ambiguously with the daughter "wondering" whether survival or death would have been the better choice.</p>
+
+  <h2>Form &amp; Structure</h2>
+  <p><strong>Third-person narration by the daughter</strong> — the distance of "he" and "his" reflects the emotional distance the family was forced to maintain. In the later stanzas, the pronoun shifts to <strong>"we"</strong> — the daughter implicates herself in his social death, admitting her own complicity. <strong>Long, flowing stanzas</strong> describing the sea and nature mirror the beauty that draws the pilot back to life. <strong>Shorter, clipped lines</strong> in the aftermath sections mirror the community's cold rejection. The poem ends with the word <strong>"wonder"</strong> — deliberately ambiguous between wonder (awe, appreciation of life) and wondering (doubt, uncertainty about the right choice). No resolution is offered.</p>
+
+  <h2>Key Quotes &amp; Analysis</h2>
+
+  <div class="quote-block">
+    <div class="quote-text">"a samurai sword in his kimono"</div>
+    <div class="quote-analysis">The opening establishes the pilot firmly within Japanese cultural identity and the warrior code (Bushidō). The samurai sword is a symbol of honour, duty, and death — carrying it is the mark of a warrior who expects to die with dignity. Before any doubt enters the poem, Garland establishes what the pilot is supposed to be. The cultural specificity is important: this is not a generic soldier, but a man embedded in a particular code of honour.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"the little fishing boats strung out like bunting"</div>
+    <div class="quote-analysis">The simile of "bunting" — the colourful flags hung at celebrations — transforms the fishing boats into a symbol of civilian joy and festivity. Seen from the air, the world below is not a strategic target but something alive and celebratory. The contrast between his warplane above and these "little" boats below — ordinary, domestic, joyful — is what turns him back. Life, not death, is what the sea below him offers. "Little" is also poignant: the world of ordinary things is small but extraordinarily precious.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"he must have wondered / which had been the better way to die"</div>
+    <div class="quote-analysis">The central question of the poem, delivered with devastating precision. The choice is not between life and death — it is between two kinds of death: the physical death of the mission, or the social death of returning. "Must have wondered" — the daughter doesn't know; this is an imagined interiority. The word "wondered" here means genuine, unresolved uncertainty. The "better way to die" does not presuppose survival as the right choice, which is what makes the poem so unsettling.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"they treated him as though he no longer existed"</div>
+    <div class="quote-analysis">The community enacts a social death that mirrors the physical death he was supposed to have accepted. The grammar is important: "as though" marks a performance — they know he exists, but choose to act as if he doesn't. This deliberate performance of non-existence is, Garland implies, its own form of cruelty. The violence here is in the silence and the looking-through, not in any physical act.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"till she too came to wonder"</div>
+    <div class="quote-analysis">The final line's ambiguity is the poem's most important feature. "She too" — the daughter — only late in life begins to question. "Wonder" returns the poem's key word: wonder as awe (she wonders at the courage it took to choose life) or wonder as doubt (she wonders, as her father did, which choice was better). The poem refuses to resolve this. Crucially, the daughter admits she was complicit — "she <em>too</em>" came to wonder, implying she previously accepted her father's social erasure without questioning it.</div>
+  </div>
+
+  <div class="memorise-box">
+    <h3>📌 Memorise These 5 Quotes</h3>
+    <ol>
+      <li>"a samurai sword in his kimono"<span>warrior code, cultural identity, before doubt</span></li>
+      <li>"the little fishing boats strung out like bunting"<span>simile — civilian life as celebratory; life over death</span></li>
+      <li>"he must have wondered / which had been the better way to die"<span>central question; two kinds of death</span></li>
+      <li>"they treated him as though he no longer existed"<span>social death as punishment for survival</span></li>
+      <li>"till she too came to wonder"<span>daughter's complicity; ambiguity of "wonder"; no resolution</span></li>
+    </ol>
+  </div>
+
+  <div class="g9-box">
+    <div class="g9-label">⬆ Grade 9 Angle</div>
+    <p>The shifting pronouns are structurally crucial — track them. The poem begins at narrative distance ("he", "his"), then the daughter admits "we" — and this single pronoun shift is where the poem's emotional complexity concentrates. She is not simply telling her father's story; she is confessing her own role in it. A student who notices and analyses this shift will produce a genuinely perceptive reading.</p>
+  </div>
+</section>
+
+<!-- REMAINS -->
+<section id="rem" class="rem">
+  <div class="poem-header">
+    <p class="poet">Simon Armitage — 2008</p>
+    <h1>Remains</h1>
+    <div class="tag-row">
+      <span class="tag">PTSD &amp; trauma</span>
+      <span class="tag">Guilt</span>
+      <span class="tag">Moral ambiguity of war</span>
+      <span class="tag">Memory</span>
+      <span class="tag">Psychological cost</span>
+    </div>
+  </div>
+
+  <div class="context-box">
+    <div class="context-label">Context</div>
+    Simon Armitage wrote this poem as part of "The Not Dead" (2008), a Channel 4 documentary and poetry collection based on real testimonies from British soldiers suffering from PTSD after service in Iraq and Afghanistan. The poem is a dramatic monologue based directly on the account of a specific soldier who killed a man he believed to be a looter, and who was subsequently haunted by the act. PTSD (Post-Traumatic Stress Disorder) was receiving increasing public attention during the Iraq and Afghanistan wars; "Remains" is one of the most powerful literary treatments of the condition.
+  </div>
+
+  <h2>Summary</h2>
+  <p>A soldier recounts how he and colleagues shot a man leaving a bank — "probably armed, possibly not." His colleagues move on; he cannot. The man's image haunts him: in the street, in his dreams, everywhere. He tries drugs and drink to forget, but the man remains — literally and psychologically — in his mind.</p>
+
+  <h2>Form &amp; Structure</h2>
+  <p><strong>Dramatic monologue</strong> — the soldier speaks directly, confessionally, in a casual colloquial voice that creates unease. The <strong>casual, conversational register</strong> (slang, euphemism, understatement) is the poem's most important technique: it shows a soldier who has been trained to dissociate from violence, and whose trauma emerges precisely because this dissociation has broken down. <strong>Enjambment</strong> throughout — the soldier's thoughts cannot be contained. The <strong>final stanza shifts to present tense</strong>, showing that PTSD lives not in the past but in the present moment. <strong>Repetition</strong> ("probably armed, possibly not" echoed; "end of story" appearing twice) enacts the obsessive, looping quality of traumatic memory.</p>
+
+  <h2>Key Quotes &amp; Analysis</h2>
+
+  <div class="quote-block">
+    <div class="quote-text">"probably armed, possibly not"</div>
+    <div class="quote-analysis">The hedging adverbs — "probably," "possibly" — are the moral heart of the poem. The killing may not have been justified. The alliterative 'p' sounds give the phrase an almost throwaway rhythm, as if the soldier is recounting something trivial, which makes the moral weight hit harder. This line is the source of all the guilt that follows: the uncertainty never resolves. Armitage refuses to let the soldier (or the reader) off the hook.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"tosses his guts back into his body"</div>
+    <div class="quote-analysis">The visceral brutality of the image is intensified by the casualness of "tosses" — a word you'd use for a ball or a coin, not human remains. This dissociative language is how trauma and military desensitisation work: soldiers are trained to speak of violence in neutral terms. The graphic physicality forces the reader into the scene in a way that abstract language cannot. This is the poem's most deliberately disturbing line.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"His bloody life in my bloody hands"</div>
+    <div class="quote-analysis">Armitage's most controlled piece of wordplay. "Bloody" functions simultaneously as literal description (blood on his hands) and as a British expletive (a mild curse of frustration). The collapse of these two meanings mirrors the collapse of moral distance: the soldier cannot use his soldier-slang without it also being a confession of what he has done. The phrase refuses to let him speak about his guilt without <em>being</em> guilty.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"his blood-shadow stays on the street"</div>
+    <div class="quote-analysis">Armitage invents the compound noun "blood-shadow" — a new word for something that doesn't exist physically but is psychologically real to the soldier. A shadow follows you; it cannot be escaped. The shadow is "his" — belonging to the dead man, not the soldier — meaning the victim still possesses something even in death, namely a persistent, haunting presence. This is the soldier's PTSD made visible as a physical object.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"dug in behind enemy lines"</div>
+    <div class="quote-analysis">The military metaphor is repurposed to describe the soldier's own mind. "Dug in" means entrenched, established, impossible to dislodge — the dead man is now occupying territory inside the soldier. "Behind enemy lines" is a profound reversal: the enemy is no longer in a foreign country but inside him. The military language the soldier uses to describe his PTSD is the same language that caused it — he cannot escape the framework of conflict.</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"sleep, and he's there in the morning"</div>
+    <div class="quote-analysis">The present tense is crucial — the trauma is not historical, it is happening now. The comma after "sleep" creates a tiny pause that enacts the hope of rest being immediately destroyed. The dead man is "there" — specific, persistent, unchanging. The line ends the poem (almost) without resolution: there is no cure, no forgetting, no end of story. The final phrase "End of story, except not really" earlier in the poem prepared us for exactly this — the story cannot end.</div>
+  </div>
+
+  <div class="memorise-box">
+    <h3>📌 Memorise These 5 Quotes</h3>
+    <ol>
+      <li>"probably armed, possibly not"<span>moral uncertainty; alliteration of 'p'; source of all guilt</span></li>
+      <li>"tosses his guts back into his body"<span>visceral imagery; casual verb = dissociation</span></li>
+      <li>"His bloody life in my bloody hands"<span>double meaning of "bloody"; guilt as language</span></li>
+      <li>"his blood-shadow stays on the street"<span>invented compound; shadow = inescapable haunting</span></li>
+      <li>"dug in behind enemy lines"<span>military metaphor for PTSD; enemy now inside him</span></li>
+    </ol>
+  </div>
+
+  <div class="g9-box">
+    <div class="g9-label">⬆ Grade 9 Angle</div>
+    <p>The <em>tone</em> is the technique. The soldier speaks in casual, colloquial language about extreme violence — "tosses," "end of story," "one of my mates." This is not carelessness; it is how trauma-induced dissociation sounds. Armitage makes the reader do the emotional work the soldier cannot. A Grade 9 student should note that the horror of the poem is produced by the <em>gap</em> between the tone and the content, not by explicit emotional language.</p>
+  </div>
+</section>
+
+<!-- COMPARISON GUIDE -->
+<section id="comp">
+  <div style="padding:40px 0 24px;">
+    <h1>Comparison Guide</h1>
+    <p class="subtitle">All 15 AQA Power &amp; Conflict poems — which of your 5 to reach for</p>
+  </div>
+
+  <p class="section-intro">In the exam, one poem is printed and named. You choose the second poem yourself. This table tells you the optimal choice for every possible named poem, and a brief reason. The "best match" column gives the single strongest pairing — but where two poems work well, both are listed.</p>
+
+  <div class="comp-header">
+    <div>Named poem</div>
+    <div>Best match from your 5</div>
+    <div>Why it works</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Ozymandias</div>
+    <div class="comp-cell best-match">Remains</div>
+    <div class="comp-cell">Both subvert grand narratives — power/legacy vs. military heroism. Both show what endures after the moment of apparent greatness. Also works with <em>Checking Out Me History</em> (power silencing others).</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">London</div>
+    <div class="comp-cell best-match">Checking Out Me History</div>
+    <div class="comp-cell">Both are angry political poems about power oppressing ordinary people. Blake's London shows state/institutional control; Agard shows colonial educational control of identity. Both use voice as resistance.</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">The Prelude</div>
+    <div class="comp-cell best-match">Kamikaze</div>
+    <div class="comp-cell">Both depict an encounter with the natural world that forces profound personal reflection and a change of course. Nature is awe-inspiring and psychologically transformative in both. Also works with <em>Ozymandias</em> (human insignificance before nature/time).</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">My Last Duchess</div>
+    <div class="comp-cell best-match">Ozymandias</div>
+    <div class="comp-cell">Both portray arrogant, controlling men whose power is revealed as corrupt through dramatic irony. Both use art (a statue, a painting) as a vehicle for exploring power. The Duke and Ozymandias both believe their authority is absolute; both are undercut.</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Charge of the Light Brigade</div>
+    <div class="comp-cell best-match">Kamikaze</div>
+    <div class="comp-cell">Both explore soldiers ordered toward death — duty vs. survival, and the glorification of sacrifice. COTLB glorifies the charge; Kamikaze deeply questions it. The contrast in attitude toward military death is the essay's spine.</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Exposure</div>
+    <div class="comp-cell best-match">Remains</div>
+    <div class="comp-cell">Both show the devastating psychological and physical toll of war on soldiers. Exposure is the slow physical suffering of waiting; Remains is the lasting psychological damage of action. Together they cover war's damage comprehensively. Also works with <em>Kamikaze</em> (nature's role in war).</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Storm on the Island</div>
+    <div class="comp-cell best-match">Ozymandias</div>
+    <div class="comp-cell">Both show human constructions crumbling before an indifferent, overwhelming force (nature/time). Also has political readings (Heaney on Northern Ireland / Shelley on political tyranny). Also works with <em>Kamikaze</em> (nature as a transformative force).</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Bayonet Charge</div>
+    <div class="comp-cell best-match">Remains</div>
+    <div class="comp-cell">Both strip away the ideology of war to expose raw, terrified humanity. Hughes shows the moment of action; Armitage shows the aftermath. Both show how military training fails to prepare soldiers for the psychological reality of killing.</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Remains</div>
+    <div class="comp-cell best-match">Poppies</div>
+    <div class="comp-cell">Both explore the psychological aftermath of war — one from the soldier's perspective, one from the mother's. Together they show war's damage from inside the conflict and outside it. Both are about what cannot be forgotten or moved past.</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Poppies</div>
+    <div class="comp-cell best-match">Remains</div>
+    <div class="comp-cell">Powerful comparison of the soldier's guilt and the mother's grief — two sides of war's lasting psychological damage. Both use indirect, suppressed language to convey intense emotion. Also works with <em>Kamikaze</em> (family relationships fractured by conflict).</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">War Photographer</div>
+    <div class="comp-cell best-match">Remains</div>
+    <div class="comp-cell">Both deal with the moral weight of witnessing violence and the guilt of connection to death. The photographer and the soldier both cannot process or escape the images of the dead. Both question how we — and society — deal with the aftermath of conflict.</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Tissue</div>
+    <div class="comp-cell best-match">Ozymandias</div>
+    <div class="comp-cell">Both explore the fragility of human power and constructed legacies. Tissue uses paper as a metaphor for the fragility of empires, maps, and records — directly paralleling the "Nothing beside remains" of Ozymandias. Both suggest human achievements are more temporary than we believe.</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">The Emigree</div>
+    <div class="comp-cell best-match">Checking Out Me History</div>
+    <div class="comp-cell">Both explore identity, belonging, and the relationship between a person and their cultural/geographical roots. Both show identity as something that must be preserved against external forces that threaten to erase it.</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Checking Out Me History</div>
+    <div class="comp-cell best-match">Ozymandias</div>
+    <div class="comp-cell">Both deal with who controls historical narrative and what that power means. Ozymandias shows a ruler who believed his legacy was assured; Agard shows the opposite — figures erased from history despite their greatness. Also works with <em>Kamikaze</em> (identity under pressure from authority/society).</div>
+  </div>
+
+  <div class="comp-row">
+    <div class="comp-cell poem-name">Kamikaze</div>
+    <div class="comp-cell best-match">Poppies</div>
+    <div class="comp-cell">Both explore war's cost through family relationships rather than the battlefield — a daughter's account of her father; a mother's account of her son. Both show war's destruction of family bonds and both focus on what is left <em>unsaid</em>. Also works with <em>Remains</em> (duty, guilt, survival).</div>
+  </div>
+
+  <hr class="divider">
+  <p style="font-size:0.88rem;color:var(--muted);">Note: If the named poem is one of your five, you may still use that poem's analysis — but you'll need to compare it to a poem you've studied less. The best strategy is to keep all five analyses equally sharp so you always have a strong second poem available.</p>
+</section>
+
+<!-- GRADE 9 TIPS -->
+<section id="tips">
+  <div style="padding:40px 0 24px;">
+    <h1>Grade 9 Technique</h1>
+    <p class="subtitle">How the exam works, what examiners reward, and how to write at the top level</p>
+  </div>
+
+  <h2>Assessment Objectives Breakdown</h2>
+  <div class="ao-row">
+    <div class="ao-box">
+      <div class="ao-label">AO1</div>
+      <div class="ao-pct">30%</div>
+      <div class="ao-desc">Argument &amp; ideas</div>
+    </div>
+    <div class="ao-box">
+      <div class="ao-label">AO2</div>
+      <div class="ao-pct">40%</div>
+      <div class="ao-desc">Language, form, structure</div>
+    </div>
+    <div class="ao-box">
+      <div class="ao-label">AO3</div>
+      <div class="ao-pct">20%</div>
+      <div class="ao-desc">Context</div>
+    </div>
+    <div class="ao-box">
+      <div class="ao-label">AO4</div>
+      <div class="ao-pct">10%</div>
+      <div class="ao-desc">SPaG</div>
+    </div>
+  </div>
+  <p><strong>AO2 is almost half the marks.</strong> Identifying a technique is worth nothing on its own — the mark comes from explaining the <em>effect</em> on the reader. Never just name a technique; always follow it with "which creates the effect of..."</p>
+
+  <hr class="divider">
+
+  <h2>How to Structure Your Answer</h2>
+  <p>The exam is <strong>one question, 45–55 minutes, worth ~30 marks</strong>. The named poem is printed on the paper. You choose the second poem yourself.</p>
+
+  <div class="tips-grid">
+    <div class="tip-box">
+      <h3>✗ The Wrong Approach</h3>
+      <p>Writing all about Poem A, then all about Poem B at the end, with a rushed comparison. This is the most common mistake and it costs marks even if the analysis is good.</p>
+    </div>
+    <div class="tip-box">
+      <h3>✓ The Right Approach</h3>
+      <p>Weave comparison throughout. Introduce a point about Poem A, then <em>immediately</em> connect it to Poem B in the same paragraph. Examiners want to see comparison as a habit of thought, not a conclusion.</p>
+    </div>
+  </div>
+
+  <h3>Paragraph Structure (for each body paragraph)</h3>
+  <div class="context-box" style="margin:12px 0 24px;">
+    <strong>1. Make a comparative point</strong> — a statement about how both poems treat the theme similarly or differently.<br><br>
+    <strong>2. Quote from Poem A + analyse language/form</strong> — focus on effect, not technique name.<br><br>
+    <strong>3. Quote from Poem B + analyse language/form</strong> — link back to the comparative point.<br><br>
+    <strong>4. Develop or complicate</strong> — introduce context, ambiguity, or a second reading. This is where Grade 8 becomes Grade 9.
+  </div>
+
+  <hr class="divider">
+
+  <h2>Grade 9 Sentence Starters</h2>
+  <p>Use these to force yourself to compare rather than describe:</p>
+
+  <ul class="starter-list">
+    <li>Both poets use [X], however while [Poet A]'s [X] suggests..., [Poet B]'s implies...</li>
+    <li>The structural shift from [X] to [Y] reflects the poem's broader argument that...</li>
+    <li>The ambiguity of [word/phrase] allows the reader to interpret... which is significant because...</li>
+    <li>Whereas [Poet A] uses [technique] to convey..., [Poet B] achieves a similar effect through...</li>
+    <li>Significantly, both poets choose [technique] at this moment, suggesting that...</li>
+    <li>[Poet A]'s use of [technique] is complicated by [context], making the reader feel...</li>
+    <li>The contrast between [X] and [Y] is central to [Poet A]'s argument that...</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>What Separates Grade 7 from Grade 9</h2>
+
+  <div class="tips-grid">
+    <div class="tip-box">
+      <h3>Grade 7 does this</h3>
+      <p>Identifies techniques accurately. Makes solid points. Uses PEE or similar. Compares at the end. Mentions context correctly.</p>
+    </div>
+    <div class="tip-box">
+      <h3>Grade 9 does this</h3>
+      <p>Analyses <em>effects</em>, not just techniques. Notices what's <em>absent</em> or unexpected. Discusses form and structure as arguments, not decoration. Considers multiple interpretations. Integrates context naturally — it illuminates meaning, not just shows knowledge.</p>
+    </div>
+  </div>
+
+  <div class="tips-grid" style="margin-top:0;">
+    <div class="tip-box">
+      <h3>Grade 7 on a quote</h3>
+      <p>"Shelley uses sibilance in 'lone and level sands' to create a sense of emptiness and vastness."</p>
+    </div>
+    <div class="tip-box">
+      <h3>Grade 9 on the same quote</h3>
+      <p>"The sibilance of 'lone and level sands' produces a slow, hissing emptiness that feels indifferent rather than mournful — nature does not mourn Ozymandias, it simply continues, which is more devastating than any explicit condemnation could be."</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Context — How to Use It at Grade 9</h2>
+  <p>Context should illuminate meaning, not decorate it. The test is: <em>does this contextual point change how I read the poem?</em> If the answer is no, leave it out.</p>
+
+  <div class="tips-grid">
+    <div class="tip-box">
+      <h3>✗ Context as decoration</h3>
+      <p>"Simon Armitage wrote this poem in 2008 for a documentary about PTSD in the Iraq War. This shows us the poem is about war."</p>
+    </div>
+    <div class="tip-box">
+      <h3>✓ Context changing the reading</h3>
+      <p>"Because Armitage based the poem on a real soldier's testimony, the casual tone is not artistic choice but faithful representation — this is how trauma sounds, which makes the poem a more disturbing and accurate portrait than a more explicitly emotional treatment would be."</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Quick-Reference: Each Poem's Strongest Comparison Points</h2>
+  <div style="font-size:0.9rem;line-height:1.8;">
+    <p><strong style="color:var(--accent1);">Ozymandias</strong> — Use for: power and its limits, the arrogance of rulers, nature's indifference, the gap between intended legacy and actual legacy, irony.</p>
+    <p><strong style="color:var(--accent2);">Checking Out Me History</strong> — Use for: identity and its construction, colonial power, the politics of knowledge, resistance through language and form.</p>
+    <p><strong style="color:var(--accent3);">Poppies</strong> — Use for: war's effect on families, suppressed grief, the perspective of those left behind, memory, the domestic vs. the military.</p>
+    <p><strong style="color:var(--accent4);">Kamikaze</strong> — Use for: duty vs. individual desire, nature's power to transform, shame and social exclusion, the cost of survival, family fracture, ambiguity of "right" choices.</p>
+    <p><strong style="color:var(--accent5);">Remains</strong> — Use for: PTSD and trauma, guilt, the moral ambiguity of war, how soldiers are damaged not just physically but psychologically, the inadequacy of language for extreme experience.</p>
+  </div>
+</section>
+
+<script>
+  function toggleTheme() {
+    const isLight = document.body.classList.toggle('light');
+    document.getElementById('theme-toggle').textContent = isLight ? '🌙' : '☀️';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
+
+  // Restore saved preference
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light');
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('theme-toggle').textContent = '🌙';
+    });
+  }
+
+  function show(tab, btn) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+    if (btn) btn.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
